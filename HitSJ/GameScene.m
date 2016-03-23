@@ -15,10 +15,14 @@ BOOL FIRST = NO;
 typedef NS_OPTIONS(int, ColorType){
     GREEN,RED,BLUE
 };
+typedef NS_OPTIONS(int, DirType) {
+    UP,DOWN,LEFT,RIGHT
+};
 @implementation GameScene
 
 -(void)didMoveToView:(SKView *)view {
-    self.colorMap = [NSArray arrayWithObjects:[NSColor blueColor],[NSColor greenColor],[NSColor redColor],[NSColor blackColor],nil];
+    
+    self.colorMap = [NSArray arrayWithObjects:[SKColor blueColor],[SKColor greenColor],[SKColor redColor],[SKColor blackColor],nil];
     /* Setup your scene here */
     [self initMap];
     [self initDots];
@@ -27,15 +31,24 @@ typedef NS_OPTIONS(int, ColorType){
 
 -(void)initMap{
 
-    self.physicsWorld.gravity = CGVectorMake(0, -10);
+    
     int widthNumber = (int)self.frame.size.width/DOTSIZE ;
     int heightNumber = (int)self.frame.size.height/DOTSIZE ;
     self.widthNumber = widthNumber;
     self.heightNumber = heightNumber;
     
+    self.ballArray = [NSMutableArray arrayWithCapacity:100];
+    for(int i = 0;i<self.widthNumber;i++){
+        self.ballArray[i] = [NSMutableArray array];
+        for(int j = 0;j<self.heightNumber;j++){
+            self.ballArray[i][j] = [NSNull null];
+        }
+    }
+    
+    
     self.balls = [NSMutableArray array];
     
-    SKSpriteNode *node = [[SKSpriteNode alloc]initWithColor:[NSColor grayColor] size:CGSizeMake(widthNumber*DOTSIZE, heightNumber*DOTSIZE)];
+    SKSpriteNode *node = [[SKSpriteNode alloc]initWithColor:[SKColor grayColor] size:CGSizeMake(widthNumber*DOTSIZE, heightNumber*DOTSIZE)];
     node.anchorPoint = CGPointMake(0.5, 0.5);
     node.name=@"nodeGray";
     node.position = CGPointMake(self.frame.size.width/2, self.frame.size.height/2);
@@ -61,6 +74,7 @@ typedef NS_OPTIONS(int, ColorType){
     node.position = point;
     node.name=@"nodeWhite";
     [self addChild:node];
+    
 }
 -(void)initDots{
     /**
@@ -68,25 +82,14 @@ typedef NS_OPTIONS(int, ColorType){
      */
     self.colorArray = (int*)malloc(self.widthNumber*self.heightNumber*sizeof(int));
     for (int l = 0;l<self.widthNumber*self.heightNumber;l++){
-        *(self.colorArray+l) = (int)EMPTYCOLOR;
-    }
-    for (int i = 0; i < DOTNUM; i++) {
-        if (DOTNUM>self.widthNumber*self.heightNumber) {
-            break;
+        if(l < DOTNUM){
+            *(self.colorArray + l) = floor(l*[self.colorMap count]/DOTNUM);
+        }else{
+            *(self.colorArray+l) = (int)EMPTYCOLOR;
         }
-        NSLog(@"%f",floor(i*[self.colorMap count]/DOTNUM));
-        *(self.colorArray + i) = floor(i*[self.colorMap count]/DOTNUM);
-        
-//        if (3*i<DOTNUM) {
-//            *(self.colorArray+i) = GREEN;
-//        }else if (1.5*i<DOTNUM){
-//            *(self.colorArray+i) = RED;
-//        }else{
-//            *(self.colorArray+i) = BLUE;
-//        }
     }
     /**
-     * random break the colorArray
+     * random the colorArray (alg. wash card)
      */
     for (int j = 0; j<self.widthNumber*self.heightNumber; j++) {
         int swanper = arc4random_uniform(self.widthNumber*self.heightNumber-1);
@@ -95,44 +98,26 @@ typedef NS_OPTIONS(int, ColorType){
         *(self.colorArray + swanper) = temp;
     }
     /**
-     * init balls
+     * init balls with colorArray
      */
     for (int k = 0; k<self.widthNumber*self.heightNumber; k++) {
         Ball *ball;
-        BOOL isContinue = NO;
-        NSLog(@"%i",*(self.colorArray + k));
         if (*(self.colorArray + k)!=EMPTYCOLOR) {
-            ball = [Ball initBallWithColor:(NSColor *)[self.colorMap objectAtIndex:*(self.colorArray + k)]];
-        }else{
-            isContinue = YES;
-        }
-        
-//        switch (*(self.colorArray+k)) {
-//            case GREEN:
-//                ball = [Ball initBallWithColor:[SKColor greenColor]];
-//                break;
-//            case RED:
-//                ball = [Ball initBallWithColor:[SKColor redColor]];
-//                break;
-//            case BLUE:
-//                ball = [Ball initBallWithColor:[SKColor blueColor]];
-//                break;
-//            case EMPTYCOLOR:
-//                isContinue = YES;
-//            default:
-//                isContinue = YES;
-//        }
-        if (isContinue) {
-            continue;
-        }else{
-            ball.name=@"ball";
+            ball = [Ball initBallWithColor:(SKColor *)[self.colorMap objectAtIndex:*(self.colorArray + k)]];
             ball.position = [self convertPointWithDotNumber:k];
             [self addChild:ball];
             [self.balls addObject:ball];
+            self.ballArray[(int)k%self.widthNumber][(int)k/self.widthNumber]=ball;
         }
     }
 }
 
+
+
+/**
+ * functions works with colorArray 
+ * probably never usable
+ */
 -(int *)colorArrayAccessWidth:(int)width andHeight:(int)height{
     return (self.colorArray+height*self.widthNumber + width);
 }
@@ -149,6 +134,9 @@ typedef NS_OPTIONS(int, ColorType){
     int width = (int)dotNumber%self.widthNumber;
     return [self convertPointWithWidth:width withHeight:height];
 }
+/**
+ * end of whatever functions
+ */
 
 -(void)mouseDown:(NSEvent *)theEvent {
     /* Called when a mouse click occurs */
@@ -159,197 +147,37 @@ typedef NS_OPTIONS(int, ColorType){
     int height = (location.y - orgion.y)/DOTSIZE;
     int *color = [self colorArrayAccessWidth:width andHeight:height];
     
+    if(*color != EMPTYCOLOR){
+        return;
+    }
     
     /**
      * init the temp data for checking;
      */
     NSMutableArray<Ball *>* dirBall = [NSMutableArray array];
-    NSArray<SKNode *>* nodes;
-    CGPoint p;
-    BOOL isBreak = NO;
-    
+    Ball * up = [self checkBallWithDir:UP withWidth:width withHeight:height];
+    if(up != nil){
+        [dirBall addObject:up];
+    }
+    Ball * down = [self checkBallWithDir:DOWN withWidth:width withHeight:height];
+    if(down != nil){
+        [dirBall addObject:down];
+    }
+    Ball * right = [self checkBallWithDir:RIGHT withWidth:width withHeight:height];
+    if(right != nil){
+        [dirBall addObject:right];
+    }
+    Ball * left = [self checkBallWithDir:LEFT withWidth:width withHeight:height];
+    if(left != nil){
+        [dirBall addObject:left];
+    }
     
     /**
-     * if the click point is not EMPTYCOLOR then shit it
+     * bucket sort
      */
-    if (*color == EMPTYCOLOR) {
-        /**
-         *loop the upper Color
-         */
-        int tempH = height;
-        int tempW = width;
-        while ( true) {
-            tempH++;
-            /**
-             *check if break out of bounds
-             */
-            if (tempH>=self.heightNumber) {
-                break;
-            }
-            /**
-             * check the one with color on it, then put the ball into dirBall;
-             */
-            switch (*[self colorArrayAccessWidth:tempW andHeight:tempH]) {
-                case EMPTYCOLOR:
-                    continue;
-                    break;
-                    
-                default:
-                    p = [self convertPointWithWidth:tempW
-                                         withHeight:tempH];
-                    p.x += 0.5*DOTSIZE;
-                    p.y += 0.5*DOTSIZE;
-                    nodes = [self nodesAtPoint:p];
-                    for (SKNode *node in nodes) {
-                        if ([node isKindOfClass:[Ball class]]) {
-                            Ball *ball = (Ball *)node;
-                            [dirBall addObject:ball];
-                            isBreak = YES;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            if (isBreak) {
-                break;
-            }
-        }
-        
-        /**
-         * check y--;
-         */
-        isBreak = NO;
-        tempH = height;
-        tempW = width;
-        while (true) {
-            tempH--;
-            /**
-             *check if break out of bounds
-             */
-            if (tempH<0) {
-                break;
-            }
-            /**
-             * check the one with color on it, then put the ball into dirBall;
-             */
-            switch (*[self colorArrayAccessWidth:tempW andHeight:tempH]) {
-                case EMPTYCOLOR:
-                    continue;
-                    break;
-                    
-                default:
-                    p = [self convertPointWithWidth:tempW
-                                         withHeight:tempH];
-                    p.x += 0.5*DOTSIZE;
-                    p.y += 0.5*DOTSIZE;
-                    nodes = [self nodesAtPoint:p];
-                    for (SKNode *node in nodes) {
-                        if ([node isKindOfClass:[Ball class]]) {
-                            Ball *ball = (Ball *)node;
-                            [dirBall addObject:ball];
-                            isBreak = YES;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            if (isBreak) {
-                break;
-            }
-            
-            
-        }
-
-        
-        /**
-         * check x--;
-         */
-        isBreak = NO;
-        tempH = height;
-        tempW = width;
-        while (true) {
-            tempW--;
-            /**
-             *check if break out of bounds
-             */
-            if (tempW<0) {
-                break;
-            }
-            /**
-             * check the one with color on it, then put the ball into dirBall;
-             */
-            switch (*[self colorArrayAccessWidth:tempW andHeight:tempH]) {
-                case EMPTYCOLOR:
-                    continue;
-                    break;
-                    
-                default:
-                    p = [self convertPointWithWidth:tempW
-                                         withHeight:tempH];
-                    p.x += 0.5*DOTSIZE;
-                    p.y += 0.5*DOTSIZE;
-                    nodes = [self nodesAtPoint:p];
-                    for (SKNode *node in nodes) {
-                        if ([node isKindOfClass:[Ball class]]) {
-                            Ball *ball = (Ball *)node;
-                            [dirBall addObject:ball];
-                            isBreak = YES;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            if (isBreak) {
-                break;
-            }
-        }
-
-        /**
-         * check x++;
-         */
-        isBreak = NO;
-        tempH = height;
-        tempW = width;
-        while (true) {
-            tempW++;
-            /**
-             *check if break out of bounds
-             */
-            if (tempW>=self.widthNumber) {
-                break;
-            }
-            /**
-             * check the one with color on it, then put the ball into dirBall;
-             */
-            switch (*[self colorArrayAccessWidth:tempW andHeight:tempH]) {
-                case EMPTYCOLOR:
-                    continue;
-                    break;
-                    
-                default:
-                    p = [self convertPointWithWidth:tempW
-                                         withHeight:tempH];
-                    p.x += 0.5*DOTSIZE;
-                    p.y += 0.5*DOTSIZE;
-                    nodes = [self nodesAtPoint:p];
-                    for (SKNode *node in nodes) {
-                        if ([node isKindOfClass:[Ball class]]) {
-                            Ball *ball = (Ball *)node;
-                            [dirBall addObject:ball];
-                            isBreak = YES;
-                            break;
-                        }
-                    }
-                    break;
-            }
-            if (isBreak) {
-                break;
-            }
-        }
-    }
-    NSMutableDictionary<NSColor*,NSMutableArray<Ball *>*>*bucket = [NSMutableDictionary dictionary];
+    NSMutableDictionary<SKColor*,NSMutableArray<Ball *>*>*bucket = [NSMutableDictionary dictionary];
     for (Ball *ball in dirBall) {
-        NSColor * color = ball.color;
+        SKColor * color = ball.color;
         NSMutableArray<Ball*>* ballTemp = [bucket objectForKey:color];
         if(ballTemp == nil){
             ballTemp = [NSMutableArray array];
@@ -358,8 +186,10 @@ typedef NS_OPTIONS(int, ColorType){
         [bucket setObject:ballTemp forKey:color];
     }
 
-
-    [bucket enumerateKeysAndObjectsUsingBlock:^(NSColor * _Nonnull key, NSMutableArray<Ball *> * _Nonnull obj, BOOL * _Nonnull stop) {
+    /**
+     * remove same color balls
+     */
+    [bucket enumerateKeysAndObjectsUsingBlock:^(SKColor * _Nonnull key, NSMutableArray<Ball *> * _Nonnull obj, BOOL * _Nonnull stop) {
         if ([obj count]>1) {
             for (Ball * ball in obj) {
                 CGPoint location = ball.position;
@@ -368,6 +198,7 @@ typedef NS_OPTIONS(int, ColorType){
                 int height = (location.y - orgion.y)/DOTSIZE;
                 int *color = [self colorArrayAccessWidth:width andHeight:height];
                 *color = EMPTYCOLOR;
+                [self.ballArray removeObject:ball];
                 [ball fall];
 
             }
@@ -392,5 +223,42 @@ typedef NS_OPTIONS(int, ColorType){
     }
     [self.balls removeObjectsInArray:list];
     [list removeAllObjects];
+}
+
+-(Ball* _Nullable)checkBallWithDir:(DirType)dir withWidth:(int)width withHeight:(int)height{
+    int tempH = height;
+    int tempW = width;
+    while (true) {
+        switch (dir) {
+            case UP:
+                tempH++;
+                break;
+            case DOWN:
+                tempH--;
+                break;
+            case LEFT:
+                tempW--;
+                break;
+            case RIGHT:
+                tempW++;
+                break;
+            default:
+                break;
+        }
+        /**
+         *check if break out of bounds
+         */
+        if (tempW>=self.widthNumber || tempW<0 || tempH>=self.heightNumber || tempH <0) {
+            break;
+        }
+        /**
+         * check the one with color on it, then put the ball into dirBall;
+         */
+        id b = self.ballArray[tempW][tempH];
+        if([b isKindOfClass:[Ball class]]){
+            return (Ball *)b;
+        }
+    }
+    return nil;
 }
 @end

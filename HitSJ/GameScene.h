@@ -9,10 +9,11 @@
 #import <SpriteKit/SpriteKit.h>
 @class Ball;
 @interface GameScene : SKScene
+@property (nonatomic) NSMutableArray<Ball *>*balls;
+@property (assign,nonatomic) int * colorArray;
 @property (nonatomic) NSArray <NSColor *> * colorMap;
-@property (assign,nonatomic) int *colorArray;
+@property (nonatomic) NSMutableArray <NSMutableArray<id> *> * ballArray;
 @property (assign,nonatomic) SKSpriteNode *background;
-@property (nonatomic) NSMutableArray<Ball*>*balls;
 @property (assign,nonatomic) int heightNumber;
 @property (assign,nonatomic) int widthNumber;
 @end
