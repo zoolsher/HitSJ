@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C31F56081CA05B5400780E4A /* Ball.m in Sources */ = {isa = PBXBuildFile; fileRef = C31F56071CA05B5400780E4A /* Ball.m */; };
+		C3D8DA271CA051E900E1893A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D8DA261CA051E900E1893A /* AppDelegate.m */; };
+		C3D8DA2A1CA051E900E1893A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D8DA291CA051E900E1893A /* main.m */; };
+		C3D8DA2D1CA051E900E1893A /* GameScene.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D8DA2C1CA051E900E1893A /* GameScene.m */; };
+		C3D8DA2F1CA051E900E1893A /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = C3D8DA2E1CA051E900E1893A /* GameScene.sks */; };
+		C3D8DA311CA051E900E1893A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C3D8DA301CA051E900E1893A /* Assets.xcassets */; };
+		C3D8DA341CA051E900E1893A /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = C3D8DA321CA051E900E1893A /* MainMenu.xib */; };
+		C3D8DA3F1CA051E900E1893A /* HitSJTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D8DA3E1CA051E900E1893A /* HitSJTests.m */; };
+		C3D8DA4A1CA051E900E1893A /* HitSJUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = C3D8DA491CA051E900E1893A /* HitSJUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C3D8DA3B1CA051E900E1893A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3D8DA1A1CA051E900E1893A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3D8DA211CA051E900E1893A;
+			remoteInfo = HitSJ;
+		};
+		C3D8DA461CA051E900E1893A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C3D8DA1A1CA051E900E1893A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C3D8DA211CA051E900E1893A;
+			remoteInfo = HitSJ;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C31F56061CA05B5400780E4A /* Ball.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ball.h; sourceTree = "<group>"; };
+		C31F56071CA05B5400780E4A /* Ball.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Ball.m; sourceTree = "<group>"; };
+		C3D8DA221CA051E900E1893A /* HitSJ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HitSJ.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3D8DA251CA051E900E1893A /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		C3D8DA261CA051E900E1893A /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		C3D8DA291CA051E900E1893A /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		C3D8DA2B1CA051E900E1893A /* GameScene.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GameScene.h; sourceTree = "<group>"; };
+		C3D8DA2C1CA051E900E1893A /* GameScene.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GameScene.m; sourceTree = "<group>"; };
+		C3D8DA2E1CA051E900E1893A /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
+		C3D8DA301CA051E900E1893A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C3D8DA331CA051E900E1893A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		C3D8DA351CA051E900E1893A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3D8DA3A1CA051E900E1893A /* HitSJTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HitSJTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3D8DA3E1CA051E900E1893A /* HitSJTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HitSJTests.m; sourceTree = "<group>"; };
+		C3D8DA401CA051E900E1893A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C3D8DA451CA051E900E1893A /* HitSJUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HitSJUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		C3D8DA491CA051E900E1893A /* HitSJUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HitSJUITests.m; sourceTree = "<group>"; };
+		C3D8DA4B1CA051E900E1893A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C3D8DA1F1CA051E900E1893A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3D8DA371CA051E900E1893A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3D8DA421CA051E900E1893A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C3D8DA191CA051E900E1893A = {
+			isa = PBXGroup;
+			children = (
+				C3D8DA241CA051E900E1893A /* HitSJ */,
+				C3D8DA3D1CA051E900E1893A /* HitSJTests */,
+				C3D8DA481CA051E900E1893A /* HitSJUITests */,
+				C3D8DA231CA051E900E1893A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C3D8DA231CA051E900E1893A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C3D8DA221CA051E900E1893A /* HitSJ.app */,
+				C3D8DA3A1CA051E900E1893A /* HitSJTests.xctest */,
+				C3D8DA451CA051E900E1893A /* HitSJUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C3D8DA241CA051E900E1893A /* HitSJ */ = {
+			isa = PBXGroup;
+			children = (
+				C3D8DA251CA051E900E1893A /* AppDelegate.h */,
+				C3D8DA261CA051E900E1893A /* AppDelegate.m */,
+				C3D8DA2B1CA051E900E1893A /* GameScene.h */,
+				C3D8DA2C1CA051E900E1893A /* GameScene.m */,
+				C3D8DA2E1CA051E900E1893A /* GameScene.sks */,
+				C3D8DA301CA051E900E1893A /* Assets.xcassets */,
+				C3D8DA321CA051E900E1893A /* MainMenu.xib */,
+				C3D8DA351CA051E900E1893A /* Info.plist */,
+				C3D8DA281CA051E900E1893A /* Supporting Files */,
+				C31F56061CA05B5400780E4A /* Ball.h */,
+				C31F56071CA05B5400780E4A /* Ball.m */,
+			);
+			path = HitSJ;
+			sourceTree = "<group>";
+		};
+		C3D8DA281CA051E900E1893A /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				C3D8DA291CA051E900E1893A /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C3D8DA3D1CA051E900E1893A /* HitSJTests */ = {
+			isa = PBXGroup;
+			children = (
+				C3D8DA3E1CA051E900E1893A /* HitSJTests.m */,
+				C3D8DA401CA051E900E1893A /* Info.plist */,
+			);
+			path = HitSJTests;
+			sourceTree = "<group>";
+		};
+		C3D8DA481CA051E900E1893A /* HitSJUITests */ = {
+			isa = PBXGroup;
+			children = (
+				C3D8DA491CA051E900E1893A /* HitSJUITests.m */,
+				C3D8DA4B1CA051E900E1893A /* Info.plist */,
+			);
+			path = HitSJUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C3D8DA211CA051E900E1893A /* HitSJ */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3D8DA4E1CA051E900E1893A /* Build configuration list for PBXNativeTarget "HitSJ" */;
+			buildPhases = (
+				C3D8DA1E1CA051E900E1893A /* Sources */,
+				C3D8DA1F1CA051E900E1893A /* Frameworks */,
+				C3D8DA201CA051E900E1893A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HitSJ;
+			productName = HitSJ;
+			productReference = C3D8DA221CA051E900E1893A /* HitSJ.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C3D8DA391CA051E900E1893A /* HitSJTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3D8DA511CA051E900E1893A /* Build configuration list for PBXNativeTarget "HitSJTests" */;
+			buildPhases = (
+				C3D8DA361CA051E900E1893A /* Sources */,
+				C3D8DA371CA051E900E1893A /* Frameworks */,
+				C3D8DA381CA051E900E1893A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3D8DA3C1CA051E900E1893A /* PBXTargetDependency */,
+			);
+			name = HitSJTests;
+			productName = HitSJTests;
+			productReference = C3D8DA3A1CA051E900E1893A /* HitSJTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		C3D8DA441CA051E900E1893A /* HitSJUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C3D8DA541CA051E900E1893A /* Build configuration list for PBXNativeTarget "HitSJUITests" */;
+			buildPhases = (
+				C3D8DA411CA051E900E1893A /* Sources */,
+				C3D8DA421CA051E900E1893A /* Frameworks */,
+				C3D8DA431CA051E900E1893A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C3D8DA471CA051E900E1893A /* PBXTargetDependency */,
+			);
+			name = HitSJUITests;
+			productName = HitSJUITests;
+			productReference = C3D8DA451CA051E900E1893A /* HitSJUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C3D8DA1A1CA051E900E1893A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = ZooTech;
+				TargetAttributes = {
+					C3D8DA211CA051E900E1893A = {
+						CreatedOnToolsVersion = 7.2.1;
+					};
+					C3D8DA391CA051E900E1893A = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = C3D8DA211CA051E900E1893A;
+					};
+					C3D8DA441CA051E900E1893A = {
+						CreatedOnToolsVersion = 7.2.1;
+						TestTargetID = C3D8DA211CA051E900E1893A;
+					};
+				};
+			};
+			buildConfigurationList = C3D8DA1D1CA051E900E1893A /* Build configuration list for PBXProject "HitSJ" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C3D8DA191CA051E900E1893A;
+			productRefGroup = C3D8DA231CA051E900E1893A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C3D8DA211CA051E900E1893A /* HitSJ */,
+				C3D8DA391CA051E900E1893A /* HitSJTests */,
+				C3D8DA441CA051E900E1893A /* HitSJUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C3D8DA201CA051E900E1893A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3D8DA311CA051E900E1893A /* Assets.xcassets in Resources */,
+				C3D8DA2F1CA051E900E1893A /* GameScene.sks in Resources */,
+				C3D8DA341CA051E900E1893A /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3D8DA381CA051E900E1893A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3D8DA431CA051E900E1893A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C3D8DA1E1CA051E900E1893A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C31F56081CA05B5400780E4A /* Ball.m in Sources */,
+				C3D8DA2A1CA051E900E1893A /* main.m in Sources */,
+				C3D8DA2D1CA051E900E1893A /* GameScene.m in Sources */,
+				C3D8DA271CA051E900E1893A /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3D8DA361CA051E900E1893A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3D8DA3F1CA051E900E1893A /* HitSJTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C3D8DA411CA051E900E1893A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C3D8DA4A1CA051E900E1893A /* HitSJUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C3D8DA3C1CA051E900E1893A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3D8DA211CA051E900E1893A /* HitSJ */;
+			targetProxy = C3D8DA3B1CA051E900E1893A /* PBXContainerItemProxy */;
+		};
+		C3D8DA471CA051E900E1893A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C3D8DA211CA051E900E1893A /* HitSJ */;
+			targetProxy = C3D8DA461CA051E900E1893A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C3D8DA321CA051E900E1893A /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C3D8DA331CA051E900E1893A /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C3D8DA4C1CA051E900E1893A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		C3D8DA4D1CA051E900E1893A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C3D8DA4F1CA051E900E1893A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HitSJ/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zoolsher.HitSJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		C3D8DA501CA051E900E1893A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HitSJ/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zoolsher.HitSJ;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		C3D8DA521CA051E900E1893A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = HitSJTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zoolsher.HitSJTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HitSJ.app/Contents/MacOS/HitSJ";
+			};
+			name = Debug;
+		};
+		C3D8DA531CA051E900E1893A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HitSJTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zoolsher.HitSJTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HitSJ.app/Contents/MacOS/HitSJ";
+			};
+			name = Release;
+		};
+		C3D8DA551CA051E900E1893A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				INFOPLIST_FILE = HitSJUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zoolsher.HitSJUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HitSJ;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		C3D8DA561CA051E900E1893A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = HitSJUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Zoolsher.HitSJUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HitSJ;
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C3D8DA1D1CA051E900E1893A /* Build configuration list for PBXProject "HitSJ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3D8DA4C1CA051E900E1893A /* Debug */,
+				C3D8DA4D1CA051E900E1893A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3D8DA4E1CA051E900E1893A /* Build configuration list for PBXNativeTarget "HitSJ" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3D8DA4F1CA051E900E1893A /* Debug */,
+				C3D8DA501CA051E900E1893A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3D8DA511CA051E900E1893A /* Build configuration list for PBXNativeTarget "HitSJTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3D8DA521CA051E900E1893A /* Debug */,
+				C3D8DA531CA051E900E1893A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C3D8DA541CA051E900E1893A /* Build configuration list for PBXNativeTarget "HitSJUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C3D8DA551CA051E900E1893A /* Debug */,
+				C3D8DA561CA051E900E1893A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C3D8DA1A1CA051E900E1893A /* Project object */;
+}
