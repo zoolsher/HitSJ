@@ -12,9 +12,6 @@
 #define DOTNUM 200
 #define EMPTYCOLOR 100
 BOOL FIRST = NO;
-typedef NS_OPTIONS(int, ColorType){
-    GREEN,RED,BLUE
-};
 typedef NS_OPTIONS(int, DirType) {
     UP,DOWN,LEFT,RIGHT
 };
