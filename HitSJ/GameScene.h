@@ -10,8 +10,7 @@
 @class Ball;
 @interface GameScene : SKScene
 @property (nonatomic) NSMutableArray<Ball *>*balls;
-@property (assign,nonatomic) int * colorArray;
-@property (nonatomic) NSArray <NSColor *> * colorMap;
+@property (nonatomic) NSArray <SKColor *> * colorMap;
 @property (nonatomic) NSMutableArray <NSMutableArray<id> *> * ballArray;
 @property (assign,nonatomic) SKSpriteNode *background;
 @property (assign,nonatomic) int heightNumber;

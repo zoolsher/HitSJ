@@ -80,12 +80,12 @@ typedef NS_OPTIONS(int, DirType) {
     /**
      * init the colorArray
      */
-    self.colorArray = (int*)malloc(self.widthNumber*self.heightNumber*sizeof(int));
+    int *colorArray = (int*)malloc(self.widthNumber*self.heightNumber*sizeof(int));
     for (int l = 0;l<self.widthNumber*self.heightNumber;l++){
         if(l < DOTNUM){
-            *(self.colorArray + l) = floor(l*[self.colorMap count]/DOTNUM);
+            *(colorArray + l) = floor(l*[self.colorMap count]/DOTNUM);
         }else{
-            *(self.colorArray+l) = (int)EMPTYCOLOR;
+            *(colorArray+l) = (int)EMPTYCOLOR;
         }
     }
     /**
@@ -93,17 +93,17 @@ typedef NS_OPTIONS(int, DirType) {
      */
     for (int j = 0; j<self.widthNumber*self.heightNumber; j++) {
         int swanper = arc4random_uniform(self.widthNumber*self.heightNumber-1);
-        int temp = *(self.colorArray + j);
-        *(self.colorArray +j) = *(self.colorArray + swanper);
-        *(self.colorArray + swanper) = temp;
+        int temp = *(colorArray + j);
+        *(colorArray +j) = *(colorArray + swanper);
+        *(colorArray + swanper) = temp;
     }
     /**
      * init balls with colorArray
      */
     for (int k = 0; k<self.widthNumber*self.heightNumber; k++) {
         Ball *ball;
-        if (*(self.colorArray + k)!=EMPTYCOLOR) {
-            ball = [Ball initBallWithColor:(SKColor *)[self.colorMap objectAtIndex:*(self.colorArray + k)]];
+        if (*(colorArray + k)!=EMPTYCOLOR) {
+            ball = [Ball initBallWithColor:(SKColor *)[self.colorMap objectAtIndex:*(colorArray + k)]];
             ball.position = [self convertPointWithDotNumber:k];
             [self addChild:ball];
             [self.balls addObject:ball];
@@ -114,13 +114,12 @@ typedef NS_OPTIONS(int, DirType) {
 
 
 
+
 /**
  * functions works with colorArray 
  * probably never usable
  */
--(int *)colorArrayAccessWidth:(int)width andHeight:(int)height{
-    return (self.colorArray+height*self.widthNumber + width);
-}
+
 
 -(CGPoint)convertPointWithWidth:(int)width withHeight:(int)height{
     CGPoint origin = self.background.frame.origin;
@@ -145,9 +144,8 @@ typedef NS_OPTIONS(int, DirType) {
     CGPoint orgion = self.background.frame.origin;
     int width = (location.x - orgion.x)/DOTSIZE;
     int height = (location.y - orgion.y)/DOTSIZE;
-    int *color = [self colorArrayAccessWidth:width andHeight:height];
     
-    if(*color != EMPTYCOLOR){
+    if([self.ballArray[width][height] isKindOfClass:[Ball class]]){
         return;
     }
     
@@ -196,15 +194,15 @@ typedef NS_OPTIONS(int, DirType) {
                 CGPoint orgion = self.background.frame.origin;
                 int width = (location.x - orgion.x)/DOTSIZE;
                 int height = (location.y - orgion.y)/DOTSIZE;
-                int *color = [self colorArrayAccessWidth:width andHeight:height];
-                *color = EMPTYCOLOR;
-                [self.ballArray removeObject:ball];
+                self.ballArray[width][height] = [NSNull null];
+                //[self.ballArray removeObject:(id)ball];
                 [ball fall];
-
+                
             }
         }
-        stop = NO;
+        *stop = NO;
     }];
+
 }
 
 -(void)update:(CFTimeInterval)currentTime {
